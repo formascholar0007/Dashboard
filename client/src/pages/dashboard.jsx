@@ -1,18 +1,13 @@
 import React from "react";
-import Navbar from "../components/Navbar.jsx";
-import Sidebar from "../components/SideBar.jsx";
+import { Outlet } from "react-router-dom";
 
-function Dashboard() {
+const Dashboard = () => {
   return (
-    <>
-      <section className="bg-[#F8F7F7] h-screen">
-        <Navbar />
-        <div className="hero">
-          <Sidebar />
-        </div>
-      </section>
-    </>
+    <div>
+      <h1>Dashboard</h1>
+      <Outlet />
+    </div>
   );
-}
+};
 
 export default Dashboard;
