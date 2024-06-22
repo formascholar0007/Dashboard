@@ -14,12 +14,14 @@ import { toast } from "react-toastify";
 import { get } from "./api/HandleApi.js";
 import Projects from "./pages/Projects.jsx";
 import Layout from "./components/Layout.jsx";
+import Profile from "./pages/Profile.jsx";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/*" element={<AuthWrapper />} />
+      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       <Route path="/admin/projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
 
       </Routes>

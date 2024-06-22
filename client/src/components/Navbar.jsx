@@ -95,7 +95,7 @@ const Navbar = () => {
                 </svg>
               </div>
               {dropdownVisible && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg py-2">
+                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg py-2 z-20">
                   <button
                     onClick={handleOpenModal}
                     className="px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left flex items-center space-x-2"
@@ -121,7 +121,7 @@ const Navbar = () => {
         </div>
       </nav>
       {modalVisible && userInfo.role !== "admin" && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-10">
           <div className="bg-white p-6 rounded-lg shadow-lg relative w-1/3">
             <button
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
