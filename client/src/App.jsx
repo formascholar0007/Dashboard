@@ -13,13 +13,15 @@ import { setUser } from "./slices/authSlice.js";
 import { toast } from "react-toastify";
 import { get } from "./api/HandleApi.js";
 import Projects from "./pages/Projects.jsx";
+import Layout from "./components/Layout.jsx";
+
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/*" element={<AuthWrapper />} />
-        {/* admin routes */}
-        <Route path="/admin/projects" element={<Projects />} />
+      <Route path="/admin/projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
+
       </Routes>
     </Router>
   );
@@ -71,10 +73,20 @@ const AuthWrapper = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
+};
+
+const ProtectedRoute = ({ children }) => {
+  const isUser = useSelector((state) => state.auth.userInfo);
+
+  if (!isUser) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <Layout>{children}</Layout>;
 };
 
 export default App;
